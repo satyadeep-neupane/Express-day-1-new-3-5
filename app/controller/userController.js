@@ -2,6 +2,7 @@ const User = require('../model/User');
 
 exports.store = (req, res) => {
     try{
+        console.log(req.body);
         const user = new User(req.body);
         user.save();
         res.send(user);

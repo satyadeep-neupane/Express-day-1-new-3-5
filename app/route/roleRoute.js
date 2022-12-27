@@ -2,8 +2,10 @@ const RoleController = require('../controller/roleController');
 
 const router = require('express').Router();
 
-router.get('/role', RoleController.index);
-router.post('/role', RoleController.store);
-router.delete('/role/:id', RoleController.destroy);
+router.route('/')
+    .get(RoleController.index)
+    .post(RoleController.store);
+
+router.delete('/:id', RoleController.destroy);
 
 module.exports = router;

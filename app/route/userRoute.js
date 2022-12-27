@@ -2,8 +2,10 @@ const UserController = require('../controller/userController');
 
 const router = require('express').Router();
 
-router.get('/user', UserController.index);
-router.post('/user', UserController.store);
-router.delete('/user/:id', UserController.destroy);
+router.route('/')
+    .get(UserController.index)
+    .post(UserController.store);
+
+router.delete('/:id', UserController.destroy);
 
 module.exports = router;

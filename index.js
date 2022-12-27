@@ -9,9 +9,17 @@ app.get('/', (req, res) => {
 });
 
 // require('./a')(app);
-app.use(require('./app/route/userRoute'));
-app.use(require('./app/route/clientRoute'));
-app.use(require('./app/route/roleRoute'));
+const logger = require('./app/middleware/logger');
+
+app.get('/register', (req, res) => {
+    res.send("Register Page");
+});
+
+app.use(logger);
+
+app.use('/user', require('./app/route/userRoute'));
+app.use('/client', require('./app/route/clientRoute'));
+app.use('/role', require('./app/route/roleRoute'));
 
 app.all('*', (req, res) => {
     res.send("404 Not Found");
